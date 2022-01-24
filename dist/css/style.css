@@ -206,7 +206,7 @@ h1 {
   font-size: 7.5rem;
   line-height: 1.0833333333;
   font-weight: 700;
-  letter-spacing: 2%;
+  letter-spacing: 0.02em;
   color: white;
   text-transform: uppercase;
 }
@@ -239,6 +239,7 @@ h2 {
   font-size: 4.5rem;
   line-height: 110%;
   color: white;
+  letter-spacing: 0.02em;
 }
 h2_black {
   color: black;
@@ -293,11 +294,17 @@ h2::before {
   font-size: 1rem;
   line-height: 1.5;
   color: white;
-  letter-spacing: 8%;
+  letter-spacing: 0.08em;
+  transition: color 0.3s ease 0s;
 }
 @media (max-width: 29.99875em) {
   .menu__link {
     font-size: 1.125rem;
+  }
+}
+@media (any-hover: hover) {
+  .menu__link:hover {
+    color: #FF0000;
   }
 }
 
@@ -329,9 +336,24 @@ h2::before {
     gap: 0.5rem;
   }
 }
+@media (max-width: 29.99875em) {
+  .social__list {
+    gap: 0.75rem;
+  }
+}
 .social__item {
   width: 1.5rem;
   height: 1.5rem;
+}
+@media (max-width: 29.99875em) {
+  .social__item:nth-child(1) .social__link::before, .social__item:nth-child(3) .social__link::before {
+    color: white;
+  }
+}
+@media (max-width: 29.99875em) {
+  .social__item:nth-child(2) .social__link::before {
+    color: #FF0000;
+  }
 }
 .social__link {
   display: flex;
@@ -342,6 +364,17 @@ h2::before {
 }
 .social__link::before {
   color: white;
+  transition: color 0.3s ease 0s;
+}
+@media (max-width: 29.99875em) {
+  .social__link::before {
+    font-size: 1.375rem;
+  }
+}
+@media (any-hover: hover) {
+  .social__link:hover::before {
+    color: #FF0000;
+  }
 }
 
 .link-btn {
@@ -349,14 +382,41 @@ h2::before {
   align-items: center;
   justify-content: center;
   width: 16.5625rem;
-  min-height: 68;
   color: white;
   background-color: #FF0000;
   font-family: "OpenSansCondensed", sans-serif;
   font-size: 1.125rem;
   line-height: 2.1111111111;
-  letter-spacing: 8%;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  transition: background 0.4s ease 0s;
+}
+@media (min-width: 76.625em) {
+  .link-btn {
+    min-height: 4.25rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 76.625em) {
+  @supports (min-height: clamp( 2.625rem , 2.0510485651rem  +  2.8697571744vw , 4.25rem )) {
+    .link-btn {
+      min-height: clamp( 2.625rem , 2.0510485651rem  +  2.8697571744vw , 4.25rem );
+    }
+  }
+  @supports not (min-height: clamp( 2.625rem , 2.0510485651rem  +  2.8697571744vw , 4.25rem )) {
+    .link-btn {
+      min-height: calc(2.625rem + 1.625 * (100vw - 20rem) / 56.625);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .link-btn {
+    min-height: 2.625rem;
+  }
+}
+@media (any-hover: hover) {
+  .link-btn:hover {
+    background: #8f3737;
+  }
 }
 
 .subtitle {
@@ -405,6 +465,7 @@ h2::before {
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.5);
   cursor: pointer;
+  transition: border-color 0.4s ease 0s;
 }
 @media (min-width: 76.625em) {
   .page-scroll {
@@ -467,8 +528,39 @@ h2::before {
   height: 8px;
   background-color: #FF0000;
   border-radius: 50%;
+  animation-name: scroll-dot;
+  animation-duration: 2.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@media (any-hover: hover) {
+  .page-scroll:hover {
+    border-color: white;
+  }
 }
 
+@keyframes scroll-dot {
+  0% {
+    transform: scale(100%);
+  }
+  50% {
+    transform: scale(150%);
+  }
+  100% {
+    transform: scale(100%);
+  }
+}
+@keyframes screen-opacity {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
 .header {
   position: absolute;
   top: 0;
@@ -816,5 +908,8 @@ h2::before {
   width: 100%;
   height: 100%;
   background-color: #000;
-  opacity: 0.5;
+  animation-name: screen-opacity;
+  animation-duration: 8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
