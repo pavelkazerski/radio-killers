@@ -765,22 +765,18 @@ h2::before {
   .page__banner {
     grid-row: 2/3;
     grid-column: 1/2;
-    background-color: lightgreen;
   }
   .page__aboutus {
     grid-row: 2/3;
     grid-column: 2/3;
-    background-color: peachpuff;
   }
   .page__contacts {
     grid-row: 3/4;
     grid-column: 1/2;
-    background-color: paleturquoise;
   }
   .page__map {
     grid-row: 3/4;
     grid-column: 2/3;
-    background-color: lightcoral;
   }
 }
 @media (max-width: 61.99875em) {
@@ -1415,10 +1411,161 @@ h2::before {
 }
 
 .contacts {
-  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 121.875em) {
+  .contacts {
+    padding-top: 6.6875rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 121.875em) {
+  @supports (padding-top: clamp( 3.34375rem , 2.6873082822rem  +  3.282208589vw , 6.6875rem )) {
+    .contacts {
+      padding-top: clamp( 3.34375rem , 2.6873082822rem  +  3.282208589vw , 6.6875rem );
+    }
+  }
+  @supports not (padding-top: clamp( 3.34375rem , 2.6873082822rem  +  3.282208589vw , 6.6875rem )) {
+    .contacts {
+      padding-top: calc(3.34375rem + 3.34375 * (100vw - 20rem) / 101.875);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .contacts {
+    padding-top: 3.34375rem;
+  }
+}
+.contacts::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+}
+.contacts__title {
+  margin-bottom: 3.1875rem;
+}
+@media (min-width: 121.875em) {
+  .contacts__list {
+    margin-bottom: 3.875rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 121.875em) {
+  @supports (margin-bottom: clamp( 1.25rem , 0.7346625767rem  +  2.5766871166vw , 3.875rem )) {
+    .contacts__list {
+      margin-bottom: clamp( 1.25rem , 0.7346625767rem  +  2.5766871166vw , 3.875rem );
+    }
+  }
+  @supports not (margin-bottom: clamp( 1.25rem , 0.7346625767rem  +  2.5766871166vw , 3.875rem )) {
+    .contacts__list {
+      margin-bottom: calc(1.25rem + 2.625 * (100vw - 20rem) / 101.875);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .contacts__list {
+    margin-bottom: 1.25rem;
+  }
+}
+.contacts__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.contacts__item span,
+.contacts__item a {
+  color: white;
+  font-weight: 600;
+  line-height: 1.1764705882;
+}
+.contacts__item span {
+  font-family: OpenSansCondensed, sans-serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  letter-spacing: 0.035rem;
+  line-height: 0.8571428571;
+}
+@media (min-width: 121.875em) {
+  .contacts__item span {
+    margin-bottom: 1rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 121.875em) {
+  @supports (margin-bottom: clamp( 0.5rem , 0.4018404908rem  +  0.490797546vw , 1rem )) {
+    .contacts__item span {
+      margin-bottom: clamp( 0.5rem , 0.4018404908rem  +  0.490797546vw , 1rem );
+    }
+  }
+  @supports not (margin-bottom: clamp( 0.5rem , 0.4018404908rem  +  0.490797546vw , 1rem )) {
+    .contacts__item span {
+      margin-bottom: calc(0.5rem + 0.5 * (100vw - 20rem) / 101.875);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .contacts__item span {
+    margin-bottom: 0.5rem;
+  }
+}
+@media (min-width: 121.875em) {
+  .contacts__item:not(:last-child) {
+    margin-bottom: 2.375rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 121.875em) {
+  @supports (margin-bottom: clamp( 0.75rem , 0.4309815951rem  +  1.5950920245vw , 2.375rem )) {
+    .contacts__item:not(:last-child) {
+      margin-bottom: clamp( 0.75rem , 0.4309815951rem  +  1.5950920245vw , 2.375rem );
+    }
+  }
+  @supports not (margin-bottom: clamp( 0.75rem , 0.4309815951rem  +  1.5950920245vw , 2.375rem )) {
+    .contacts__item:not(:last-child) {
+      margin-bottom: calc(0.75rem + 1.625 * (100vw - 20rem) / 101.875);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .contacts__item:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+}
+.contacts__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+}
+
+.map {
+  position: relative;
   width: 100%;
 }
-.map {
-  min-height: 100vh;
+.map::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background: center/cover no-repeat url(../img/map-bg.jpg);
+}
+.map__marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.map__marker::before {
+  color: #FF0000;
+  font-size: 4rem;
 }
