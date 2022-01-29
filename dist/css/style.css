@@ -317,7 +317,7 @@ h2::before {
 }
 @media (max-width: 29.99875em) {
   .menu__link {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
   }
 }
 @media (any-hover: hover) {
@@ -386,7 +386,7 @@ h2::before {
 }
 @media (max-width: 29.99875em) {
   .social__link::before {
-    font-size: 1.375rem;
+    font-size: 1.5rem;
   }
 }
 @media (any-hover: hover) {
@@ -665,9 +665,11 @@ h2::before {
   .header__container {
     grid-template: repeat(3, auto)/1fr;
     row-gap: 0.5rem;
+    padding-bottom: 1.125rem;
   }
   .header__container .header__social {
     padding: 0;
+    padding-top: 0.5rem;
     justify-self: center;
     align-self: center;
     grid-row: 3/4;
@@ -750,6 +752,102 @@ h2::before {
   }
 }
 
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  text-align: center;
+  min-height: 15vh;
+  /* @include adaptiveValue("padding-top", 54, 18);
+  @include adaptiveValue("padding-bottom", 54, 18); */
+}
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 74.75rem;
+}
+.footer__social {
+  flex: 1 0 33.33%;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.footer__rights {
+  padding-right: 0.375rem;
+}
+.footer__dev {
+  padding-left: 0.375rem;
+  text-align: end;
+}
+.footer__rights, .footer__dev {
+  flex: 1 0 33.33%;
+  color: white;
+  line-height: 2.3529411765;
+  opacity: 0.8;
+}
+@media (max-width: 61.99875em) {
+  .footer__container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 61.99875em) and (min-width: 121.875em) {
+  .footer__social {
+    margin-bottom: 1.5rem;
+  }
+}
+@media (max-width: 61.99875em) and (min-width: 20em) and (max-width: 121.875em) {
+  @supports (margin-bottom: clamp( 0.75rem , 0.6027607362rem  +  0.736196319vw , 1.5rem )) {
+    .footer__social {
+      margin-bottom: clamp( 0.75rem , 0.6027607362rem  +  0.736196319vw , 1.5rem );
+    }
+  }
+  @supports not (margin-bottom: clamp( 0.75rem , 0.6027607362rem  +  0.736196319vw , 1.5rem )) {
+    .footer__social {
+      margin-bottom: calc(0.75rem + 0.75 * (100vw - 20rem) / 101.875);
+    }
+  }
+}
+@media (max-width: 61.99875em) and (max-width: 20em) {
+  .footer__social {
+    margin-bottom: 0.75rem;
+  }
+}
+@media (max-width: 61.99875em) and (min-width: 121.875em) {
+  .footer__rights {
+    margin-bottom: 0.75rem;
+  }
+}
+@media (max-width: 61.99875em) and (min-width: 20em) and (max-width: 121.875em) {
+  @supports (margin-bottom: clamp( 0.375rem , 0.3013803681rem  +  0.3680981595vw , 0.75rem )) {
+    .footer__rights {
+      margin-bottom: clamp( 0.375rem , 0.3013803681rem  +  0.3680981595vw , 0.75rem );
+    }
+  }
+  @supports not (margin-bottom: clamp( 0.375rem , 0.3013803681rem  +  0.3680981595vw , 0.75rem )) {
+    .footer__rights {
+      margin-bottom: calc(0.375rem + 0.375 * (100vw - 20rem) / 101.875);
+    }
+  }
+}
+@media (max-width: 61.99875em) and (max-width: 20em) {
+  .footer__rights {
+    margin-bottom: 0.375rem;
+  }
+}
+@media (max-width: 61.99875em) {
+  .footer__rights, .footer__dev {
+    line-height: 1.2;
+  }
+}
+@media (max-width: 29.99875em) {
+  .footer {
+    font-size: 0.9375rem;
+  }
+}
+
 .page {
   display: grid;
   grid-template: repeat(5, auto)/1fr;
@@ -787,22 +885,18 @@ h2::before {
   .page__banner {
     grid-row: 3/4;
     grid-column: 1/2;
-    background-color: lightgreen;
   }
   .page__aboutus {
     grid-row: 2/3;
     grid-column: 1/2;
-    background-color: peachpuff;
   }
   .page__contacts {
     grid-row: 4/5;
     grid-column: 1/2;
-    background-color: paleturquoise;
   }
   .page__map {
     grid-row: 5/6;
     grid-column: 1/2;
-    background-color: lightcoral;
   }
 }
 
@@ -1026,7 +1120,7 @@ h2::before {
   line-height: 0.9;
   text-transform: uppercase;
   color: #F2F2F2;
-  opacity: 60%;
+  opacity: 80%;
 }
 @media (min-width: 121.875em) {
   .banner__item span {
@@ -1057,7 +1151,7 @@ h2::before {
 }
 .banner__item:nth-child(1) span {
   color: #AAAAAA;
-  opacity: 40%;
+  opacity: 60%;
 }
 .banner__item:nth-child(2) {
   grid-row: 1/2;
@@ -1238,10 +1332,67 @@ h2::before {
 }
 
 .aboutus {
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  overflow: hidden;
+}
+.aboutus::after {
+  content: "";
+  position: absolute;
+  left: 60%;
+  bottom: 0;
+  z-index: 2;
+  pointer-events: none;
+  width: 24rem;
+  height: 36.3125rem;
+  background: center/contain no-repeat url(../img/microfone.png);
+}
+@media (min-width: 121.875em) {
+  .aboutus::after {
+    width: 24rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 121.875em) {
+  @supports (width: clamp( 16.8rem , 15.3865030675rem  +  7.0674846626vw , 24rem )) {
+    .aboutus::after {
+      width: clamp( 16.8rem , 15.3865030675rem  +  7.0674846626vw , 24rem );
+    }
+  }
+  @supports not (width: clamp( 16.8rem , 15.3865030675rem  +  7.0674846626vw , 24rem )) {
+    .aboutus::after {
+      width: calc(16.8rem + 7.2 * (100vw - 20rem) / 101.875);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .aboutus::after {
+    width: 16.8rem;
+  }
+}
+@media (min-width: 121.875em) {
+  .aboutus::after {
+    height: 36.3125rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 121.875em) {
+  @supports (height: clamp( 25.41875rem , 23.2800996933rem  +  10.6932515337vw , 36.3125rem )) {
+    .aboutus::after {
+      height: clamp( 25.41875rem , 23.2800996933rem  +  10.6932515337vw , 36.3125rem );
+    }
+  }
+  @supports not (height: clamp( 25.41875rem , 23.2800996933rem  +  10.6932515337vw , 36.3125rem )) {
+    .aboutus::after {
+      height: calc(25.41875rem + 10.89375 * (100vw - 20rem) / 101.875);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .aboutus::after {
+    height: 25.41875rem;
+  }
 }
 .aboutus__body {
   display: flex;
@@ -1329,6 +1480,11 @@ h2::before {
     min-height: 50vh;
     justify-content: center;
   }
+  .aboutus::after {
+    left: 50%;
+    transform: translate(-50%);
+    opacity: 0.45;
+  }
   .aboutus__body {
     padding: 2.25rem 1.25rem 2.25rem 1.25rem;
   }
@@ -1415,27 +1571,50 @@ h2::before {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 85vh;
 }
 @media (min-width: 121.875em) {
   .contacts {
-    padding-top: 6.6875rem;
+    padding-top: 1.5rem;
   }
 }
 @media (min-width: 20em) and (max-width: 121.875em) {
-  @supports (padding-top: clamp( 3.34375rem , 2.6873082822rem  +  3.282208589vw , 6.6875rem )) {
+  @supports (padding-top: clamp( 0.75rem , 0.6027607362rem  +  0.736196319vw , 1.5rem )) {
     .contacts {
-      padding-top: clamp( 3.34375rem , 2.6873082822rem  +  3.282208589vw , 6.6875rem );
+      padding-top: clamp( 0.75rem , 0.6027607362rem  +  0.736196319vw , 1.5rem );
     }
   }
-  @supports not (padding-top: clamp( 3.34375rem , 2.6873082822rem  +  3.282208589vw , 6.6875rem )) {
+  @supports not (padding-top: clamp( 0.75rem , 0.6027607362rem  +  0.736196319vw , 1.5rem )) {
     .contacts {
-      padding-top: calc(3.34375rem + 3.34375 * (100vw - 20rem) / 101.875);
+      padding-top: calc(0.75rem + 0.75 * (100vw - 20rem) / 101.875);
     }
   }
 }
 @media (max-width: 20em) {
   .contacts {
-    padding-top: 3.34375rem;
+    padding-top: 0.75rem;
+  }
+}
+@media (min-width: 121.875em) {
+  .contacts {
+    padding-bottom: 1.5rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 121.875em) {
+  @supports (padding-bottom: clamp( 0.75rem , 0.6027607362rem  +  0.736196319vw , 1.5rem )) {
+    .contacts {
+      padding-bottom: clamp( 0.75rem , 0.6027607362rem  +  0.736196319vw , 1.5rem );
+    }
+  }
+  @supports not (padding-bottom: clamp( 0.75rem , 0.6027607362rem  +  0.736196319vw , 1.5rem )) {
+    .contacts {
+      padding-bottom: calc(0.75rem + 0.75 * (100vw - 20rem) / 101.875);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .contacts {
+    padding-bottom: 0.75rem;
   }
 }
 .contacts::before {
@@ -1450,7 +1629,30 @@ h2::before {
   opacity: 0.5;
 }
 .contacts__title {
+  display: inline-block;
   margin-bottom: 3.1875rem;
+}
+@media (min-width: 121.875em) {
+  .contacts__title {
+    margin-bottom: 3.1875rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 121.875em) {
+  @supports (margin-bottom: clamp( 0.75rem , 0.2714723926rem  +  2.3926380368vw , 3.1875rem )) {
+    .contacts__title {
+      margin-bottom: clamp( 0.75rem , 0.2714723926rem  +  2.3926380368vw , 3.1875rem );
+    }
+  }
+  @supports not (margin-bottom: clamp( 0.75rem , 0.2714723926rem  +  2.3926380368vw , 3.1875rem )) {
+    .contacts__title {
+      margin-bottom: calc(0.75rem + 2.4375 * (100vw - 20rem) / 101.875);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .contacts__title {
+    margin-bottom: 0.75rem;
+  }
 }
 @media (min-width: 121.875em) {
   .contacts__list {
@@ -1458,20 +1660,20 @@ h2::before {
   }
 }
 @media (min-width: 20em) and (max-width: 121.875em) {
-  @supports (margin-bottom: clamp( 1.25rem , 0.7346625767rem  +  2.5766871166vw , 3.875rem )) {
+  @supports (margin-bottom: clamp( 1rem , 0.4355828221rem  +  2.8220858896vw , 3.875rem )) {
     .contacts__list {
-      margin-bottom: clamp( 1.25rem , 0.7346625767rem  +  2.5766871166vw , 3.875rem );
+      margin-bottom: clamp( 1rem , 0.4355828221rem  +  2.8220858896vw , 3.875rem );
     }
   }
-  @supports not (margin-bottom: clamp( 1.25rem , 0.7346625767rem  +  2.5766871166vw , 3.875rem )) {
+  @supports not (margin-bottom: clamp( 1rem , 0.4355828221rem  +  2.8220858896vw , 3.875rem )) {
     .contacts__list {
-      margin-bottom: calc(1.25rem + 2.625 * (100vw - 20rem) / 101.875);
+      margin-bottom: calc(1rem + 2.875 * (100vw - 20rem) / 101.875);
     }
   }
 }
 @media (max-width: 20em) {
   .contacts__list {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
   }
 }
 .contacts__item {
@@ -1489,9 +1691,30 @@ h2::before {
 .contacts__item span {
   font-family: OpenSansCondensed, sans-serif;
   font-weight: 700;
-  font-size: 1.75rem;
   letter-spacing: 0.035rem;
   line-height: 0.8571428571;
+}
+@media (min-width: 121.875em) {
+  .contacts__item span {
+    font-size: 1.75rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 121.875em) {
+  @supports (font-size: clamp( 1.25rem , 1.1518404908rem  +  0.490797546vw , 1.75rem )) {
+    .contacts__item span {
+      font-size: clamp( 1.25rem , 1.1518404908rem  +  0.490797546vw , 1.75rem );
+    }
+  }
+  @supports not (font-size: clamp( 1.25rem , 1.1518404908rem  +  0.490797546vw , 1.75rem )) {
+    .contacts__item span {
+      font-size: calc(1.25rem + 0.5 * (100vw - 20rem) / 101.875);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .contacts__item span {
+    font-size: 1.25rem;
+  }
 }
 @media (min-width: 121.875em) {
   .contacts__item span {
@@ -1545,10 +1768,16 @@ h2::before {
   width: 100%;
   height: 100%;
 }
+@media (max-width: 61.99875em) {
+  .contacts {
+    min-height: 42.5vh;
+  }
+}
 
 .map {
   position: relative;
   width: 100%;
+  min-height: 85vh;
 }
 .map::before {
   content: "";
@@ -1568,4 +1797,9 @@ h2::before {
 .map__marker::before {
   color: #FF0000;
   font-size: 4rem;
+}
+@media (max-width: 61.99875em) {
+  .map {
+    min-height: 42.5vh;
+  }
 }
