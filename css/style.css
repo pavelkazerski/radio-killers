@@ -965,6 +965,7 @@ h2._active::before {
 
 .preview {
   position: relative;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -975,7 +976,7 @@ h2._active::before {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 5;
   width: 100%;
   height: 0.5rem;
   background-color: #FF0000;
@@ -989,7 +990,7 @@ h2._active::before {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -2;
+  z-index: 1;
   width: 100%;
   height: 100%;
 }
@@ -1009,6 +1010,8 @@ h2._active::before {
   animation-iteration-count: infinite;
 }
 .preview__body {
+  position: relative;
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -1846,11 +1849,6 @@ h2._active::before {
     margin-bottom: 0.75rem;
   }
 }
-@media (any-hover: hover) {
-  .contacts__item a:hover {
-    color: #AAAAAA;
-  }
-}
 .contacts__bg {
   position: absolute;
   top: 0;
@@ -1862,6 +1860,11 @@ h2._active::before {
 @media (max-width: 61.99875em) {
   .contacts {
     min-height: 42.5vh;
+  }
+}
+@media (any-hover: hover) {
+  .contacts .contacts__item a:hover {
+    color: #AAAAAA;
   }
 }
 
